@@ -2,10 +2,10 @@
     background-color: violet;
     grid-area: nav;
     padding: 20px;
-    text-decoration: none;
 }
 
 .item a {
+    text-decoration: none;
     color: white;
 }
 
