@@ -1,0 +1,21 @@
+.friend {
+    margin: 5px;
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+img{
+    margin: 0;
+    border-radius: 50%;
+}
+
+a.activeLink{
+    color: gold;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

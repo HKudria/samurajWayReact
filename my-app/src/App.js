@@ -14,14 +14,14 @@ import Setting from "./components/Setting/Setting";
 function App(props) {
     return (
         <BrowserRouter>
-
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar state={props.state.sidebarPage}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/dialog/*" element={<Dialogs dialogsData={props.dialogsData} messageData={props.messageData}/>}/>
-                        <Route path="/profile" element={<Profile postsData={props.postsData}/>}/>
+                        <Route path="/dialog/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
+                        <Route path="/profile" element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path="/" element={<Profile state={props.state.profilePage}/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/setting" element={<Setting/>}/>

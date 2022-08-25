@@ -1,8 +1,9 @@
 import React from "react";
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import Friends from "./Friends/Friends";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return(
         <nav className={s.nav}>
             <div className={s.item}>
@@ -20,6 +21,11 @@ const Navbar = () => {
             <div className={s.item}>
                 <NavLink to="/setting" className={({ isActive }) =>  (isActive ? s.activeLink : "")}>Settings</NavLink>
             </div>
+            <div>
+                <Friends friends={props.state.friends}/>
+            </div>
+
+
         </nav>
     )
 }
