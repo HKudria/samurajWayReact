@@ -3,16 +3,22 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+    let textArea = React.createRef();
+
+    const addPost = () => {
+        alert(textArea.current.value)
+    }
+
     return (
         <div className={s.postsBlock}>
             <h3>My Posts</h3>
             <div>New Post</div>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={textArea}></textarea>
                 </div>
                 <div>
-                    <button>Add new post</button>
+                    <button onClick={addPost}>Add new post</button>
                 </div>
             </div>
             <div className={s.posts}>
