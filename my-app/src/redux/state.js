@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     profilePage: {
         postsData : [
@@ -8,7 +10,8 @@ let state = {
             {id: 5, post: 'post5', likesCount: 5},
             {id: 6, post: 'post6', likesCount: 6},
             {id: 7, post: 'post7', likesCount: 7}
-        ]
+        ],
+        newPostText: 'test'
     },
     dialogsPage: {
         dialogsData : [
@@ -37,6 +40,22 @@ let state = {
             {id: 3, name: 'Natalia', avatar: 'https://abrakadabra.fun/uploads/posts/2022-03/1647673108_1-abrakadabra-fun-p-anime-avatarka-dlya-devushki-estetika-7.png'}
         ]
     }
+}
+
+export let addPost = () => {
+    let newPost = {
+        id: 5,
+        post: state.profilePage.newPostText,
+        likesCount: 0
+    }
+    state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+
+export let changePostState = (newText) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
 }
 
 export default state

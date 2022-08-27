@@ -3,10 +3,9 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    let textArea = React.createRef();
 
-    const addPost = () => {
-        alert(textArea.current.value)
+    const onPostChange = (event) => {
+        props.updateNewPostText(event.target.value)
     }
 
     return (
@@ -15,17 +14,17 @@ const MyPosts = (props) => {
             <div>New Post</div>
             <div>
                 <div>
-                    <textarea ref={textArea}></textarea>
+                    <textarea ref={textArea} onChange={(event) => onPostChange(event)} value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add new post</button>
+                    <button onClick={props.addPost}>Add new post</button>
                 </div>
             </div>
             <div className={s.posts}>
-                {props.postsData.length?
+                {props.postsData.length ?
                     props.postsData.map(item => {
-                    return <Post message={item.post} likes={item.likesCount}/>
-                }) : 'You don\'t have any posts' }
+                        return <Post message={item.post} likes={item.likesCount}/>
+                    }) : 'You don\'t have any posts'}
             </div>
         </div>
     )
