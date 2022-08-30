@@ -14,12 +14,12 @@ const Dialogs = (props) => {
         <div className={s.dialogs}>
             <div className={s.dialog}>
                 {props.state.dialogsData.map(item => {
-                    return <DialogItem id={item.id} name={item.name}/>
+                    return <DialogItem key={item.id} id={item.id} name={item.name}/>
                 })}
             </div>
             <div className={s.messages}>
                 {props.state.messageData.map(item => {
-                    return <MessageItem message={item.message}/>
+                    return <MessageItem key={item.id} message={item.message}/>
                 })}
             </div>
             <div>

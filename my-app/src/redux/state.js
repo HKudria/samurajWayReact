@@ -57,7 +57,8 @@ let store = {
     getState() {
         return this._state
     },
-    addPost() {
+
+    _addPost() {
         let newPost = {
             id: 5,
             post: this._state.profilePage.newPostText,
@@ -67,9 +68,20 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._subscriber(this._state)
     },
-    changePostState(newText) {
+    _changePostState(newText) {
         this._state.profilePage.newPostText = newText
         this._subscriber(this._state)
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case "ADD-POST":
+                this._addPost()
+                break
+            case "UPDATE-POST-TEXT":
+                this._changePostState(action.newText)
+                break
+        }
     }
 }
 
