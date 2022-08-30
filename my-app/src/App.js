@@ -12,6 +12,7 @@ import Setting from "./components/Setting/Setting";
 
 
 function App(props) {
+    // debugger
     return (
             <div className='app-wrapper'>
                 <Header/>

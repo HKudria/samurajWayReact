@@ -1,10 +1,4 @@
 let store = {
-    _subscriber() {
-        console.log('test')
-    },
-    setSubscriber(observer) {
-        this._subscriber = observer
-    },
     _state: {
         profilePage: {
             postsData: [
@@ -54,6 +48,12 @@ let store = {
             ]
         }
     },
+    _subscriber() {
+        console.log('test')
+    },
+    setSubscriber(observer) {
+        this._subscriber = observer
+    },
     getState() {
         return this._state
     },
@@ -65,12 +65,14 @@ let store = {
         }
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = ''
-        this._subscriber()
+        this._subscriber(this._state)
     },
     changePostState(newText) {
         this._state.profilePage.newPostText = newText
-        this._subscriber()
+        this._subscriber(this._state)
     }
 }
+
+window.store = store
 
 export default store
