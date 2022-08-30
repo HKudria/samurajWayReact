@@ -1,15 +1,12 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {addPostCreateAction, updatePostTextCreateAction} from "../../../redux/state";
 
 const MyPosts = (props) => {
 
     const onPostChange = (event) => {
-        const action = {
-            type: "UPDATE-POST-TEXT",
-            newText: event.target.value
-        }
-        props.dispatch(action)
+        props.dispatch(updatePostTextCreateAction(event.target.value))
     }
 
     return (
@@ -21,7 +18,7 @@ const MyPosts = (props) => {
                     <textarea onChange={(event) => onPostChange(event)} value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={() => props.dispatch({type:"ADD-POST"})}>Add new post</button>
+                    <button onClick={() => props.dispatch(addPostCreateAction())}>Add new post</button>
                 </div>
             </div>
             <div className={s.posts}>
