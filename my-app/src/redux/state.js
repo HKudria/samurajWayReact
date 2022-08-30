@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST"
 const UPDATE_POST_TEXT = "UPDATE-POST-TEXT"
+const ADD_MESSAGE = "ADD-MESSAGE"
+const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT"
 
 
 let store = {
@@ -34,7 +36,8 @@ let store = {
                 {id: 5, message: 'message5'},
                 {id: 6, message: 'message6'},
                 {id: 7, message: 'message7'}
-            ]
+            ],
+            messageText: ''
         },
         sidebarPage: {
             friends: [
@@ -77,6 +80,20 @@ let store = {
         this._subscriber(this._state)
     },
 
+    _addMessage() {
+        let newMessage = {
+            id: 100,
+            message: this._state.dialogsPage.messageText,
+        }
+        this._state.dialogsPage.messageData.push(newMessage)
+        this._state.dialogsPage.messageText = ''
+        this._subscriber(this._state)
+    },
+    _changeMessageState(newText) {
+        this._state.dialogsPage.messageText = newText
+        this._subscriber(this._state)
+    },
+
     dispatch(action) {
         switch (action.type) {
             case ADD_POST:
@@ -85,6 +102,12 @@ let store = {
             case UPDATE_POST_TEXT:
                 this._changePostState(action.newText)
                 break
+            case ADD_MESSAGE:
+                this._addMessage()
+                break
+            case UPDATE_MESSAGE_TEXT:
+                this._changeMessageState(action.newText)
+                break
         }
     }
 }
@@ -92,6 +115,11 @@ let store = {
 export const addPostCreateAction = () => ({type: ADD_POST})
 
 export const updatePostTextCreateAction = (text) => ({type: UPDATE_POST_TEXT, newText: text})
+
+export const addMessageCreateAction = () => ({type: ADD_MESSAGE})
+
+export const updateMessageTextCreateAction = (text) => ({type: UPDATE_MESSAGE_TEXT, newText: text})
+
 
 window.store = store
 

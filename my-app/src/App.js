@@ -12,14 +12,13 @@ import Setting from "./components/Setting/Setting";
 
 
 function App(props) {
-    // debugger
     return (
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar state={props.state.sidebarPage}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/dialog/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
+                        <Route path="/dialog/*" element={<Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
                         <Route path="/profile" element={<Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
