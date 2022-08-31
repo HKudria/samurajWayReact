@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from "./redux/state";
+import store from "./redux/reduxStore";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
@@ -18,6 +18,6 @@ let rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState())
 
-store.setSubscriber(rerenderEntireTree)
+store.subscribe(()=>rerenderEntireTree(store.getState()))
 
 reportWebVitals();
